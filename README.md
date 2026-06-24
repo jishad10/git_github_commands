@@ -1,4 +1,4 @@
-# Git & GitHub Learning Notes (DevOps / Backend Developer Edition)
+# Git & GitHub Learning Notes (DevOps Edition)
 
 # 1. Git Basics
 
