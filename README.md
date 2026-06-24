@@ -1,4 +1,4 @@
-# Git & GitHub Learning Notes (DevOps Edition)
+# Git & GitHub Learning Notes (DevOps / Backend Developer Edition)
 
 # 1. Git Basics
 
@@ -528,7 +528,70 @@ git push
 
 ---
 
-# 17. Fetch
+# 17. GitHub Repository Setup (Quickstart)
+
+GitHub shows these two snippets whenever you create a new empty repo on github.com. They cover the two real-world starting points: a brand-new project with no Git history yet, vs. a project that already has commits locally.
+
+## A. Create a New Repository on the Command Line
+
+Use this when there is **no `.git` folder yet** — you're starting completely fresh and already created an empty repo on GitHub.
+
+```bash
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/jishad10/kubestarter90.git
+git push -u origin main
+```
+
+Step by step:
+
+| Command | Purpose |
+|---|---|
+| `git init` | Initializes a new local repo (`.git` folder) |
+| `git add README.md` | Stages the README file |
+| `git commit -m "first commit"` | Creates the first commit |
+| `git branch -M main` | Force-renames the current branch to `main` |
+| `git remote add origin <url>` | Links the local repo to the GitHub repo |
+| `git push -u origin main` | Pushes commits and sets upstream tracking |
+
+---
+
+## B. Push an Existing Repository from the Command Line
+
+Use this when you **already have a local Git repo** with commits, and just want to connect it to a new, empty GitHub repo.
+
+```bash
+git remote add origin https://github.com/jishad10/kubestarter90.git
+git branch -M main
+git push -u origin main
+```
+
+No `git init`, `git add`, or `git commit` here — history already exists locally. You're just wiring up the remote and pushing it.
+
+---
+
+## A vs B — Comparison
+
+| | A: Create New | B: Push Existing |
+|---|---|---|
+| Local repo exists? | No (`git init` needed) | Yes, already has commits |
+| Steps involved | init → add → commit → branch → remote → push | remote → branch → push |
+| When to use | Starting a project from zero | Already coded locally, GitHub repo just created |
+
+---
+
+## Note: `git branch -M main` vs `git branch -m main`
+
+- `-M` → **force** rename (overwrites `main` if it somehow already exists)
+- `-m` → rename only if there's no naming conflict
+
+This command exists mostly for historical reasons: older Git versions defaulted the initial branch to `master`, so `-M main` standardizes it to `main` before the first push.
+
+---
+
+# 18. Fetch
 
 Downloads updates only.
 
@@ -546,7 +609,7 @@ No merge occurs.
 
 ---
 
-# 18. Pull
+# 19. Pull
 
 ```bash
 git pull
@@ -573,7 +636,7 @@ Fetch + Merge
 
 ---
 
-# 19. Fetch All
+# 20. Fetch All
 
 ```bash
 git fetch --all
@@ -583,7 +646,7 @@ Fetch updates from all remotes.
 
 ---
 
-# 20. Prune
+# 21. Prune
 
 ```bash
 git fetch --prune
@@ -593,7 +656,7 @@ Removes stale remote-tracking branches.
 
 ---
 
-# 21. Delete Branches
+# 22. Delete Branches
 
 ## Local
 
@@ -617,7 +680,7 @@ git push origin --delete feature1
 
 ---
 
-# 22. Fork
+# 23. Fork
 
 Fork = GitHub copy of another repository.
 
@@ -647,7 +710,7 @@ GitHub → Local Machine
 
 ---
 
-# 23. Rebase
+# 24. Rebase
 
 Alternative to merge.
 
@@ -732,7 +795,7 @@ shared branches
 
 ---
 
-# 24. Daily Industry Workflow
+# 25. Daily Industry Workflow
 
 ```bash
 git checkout main
@@ -792,6 +855,14 @@ Clone = Local Copy
 Stash = Temporary
 
 Commit = Permanent History
+
+---
+
+## Create New Repo vs Push Existing Repo
+
+Create New = `init` + `add` + `commit` + `remote` + `push` (no local history yet)
+
+Push Existing = `remote` + `push` (local history already exists)
 
 ---
 
